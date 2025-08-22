@@ -11,6 +11,7 @@ namespace SenacStore.API.Models
         public string Nome { get; set; }
         public string Descricao { get; set; }
         public string Imagem { get; set; }
+        [Range(0, 5)]
         public int Nota { get; set; }
         public bool EhLancamento { get; set; }
         public decimal Preco { get; set; }

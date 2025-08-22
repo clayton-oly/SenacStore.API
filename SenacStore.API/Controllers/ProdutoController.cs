@@ -21,6 +21,9 @@ namespace SenacStore.API.Controllers
         {
             var produtos = await _produtoRepository.GetAllAsync();
 
+            if (produtos.Count == 0)
+                return NotFound("");
+
             var produtosDTO = produtos.Select(produto => new ProdutoDTO
             {
                 Id = produto.Id,
@@ -33,7 +36,6 @@ namespace SenacStore.API.Controllers
                 Categoria = produto.Categoria
             }).ToList();
 
-
             return Ok(produtosDTO);
         }
 
@@ -41,6 +43,9 @@ namespace SenacStore.API.Controllers
         public async Task<IActionResult> GetById(int id)
         {
             var produto = await _produtoRepository.GetByIdAsync(id);
+
+            if (produto == null)
+                return NotFound();
 
             var produtoDTO = new ProdutoDTO
             {
@@ -73,7 +78,9 @@ namespace SenacStore.API.Controllers
             };
 
             await _produtoRepository.AddAsync(produto);
-            return Ok();
+
+           var teste =   CreatedAtAction(nameof(GetById), new { id = produto.Id }, produto);
+            return teste;
         }
 
         [HttpPut("{id}")]
