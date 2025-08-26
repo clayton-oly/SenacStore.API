@@ -33,7 +33,7 @@ namespace SenacStore.API.Controllers
                 Preco = produto.Preco,
                 EhLancamento = produto.EhLancamento,
                 Nota = produto.Nota,
-                Categoria = produto.Categoria
+                Categoria = produto.Categoria.Nome
             }).ToList();
 
             return Ok(produtosDTO);
@@ -56,7 +56,7 @@ namespace SenacStore.API.Controllers
                 Preco = produto.Preco,
                 EhLancamento = produto.EhLancamento,
                 Nota = produto.Nota,
-                Categoria = produto.Categoria
+                Categoria = produto.Categoria.Nome
             };
 
             return Ok(produtoDTO);
@@ -74,7 +74,7 @@ namespace SenacStore.API.Controllers
                 Preco = produtoDTO.Preco,
                 EhLancamento = produtoDTO.EhLancamento,
                 Nota = produtoDTO.Nota,
-                Categoria = produtoDTO.Categoria
+                CategoriaId = produtoDTO.CategoriaId
             };
 
             await _produtoRepository.AddAsync(produto);
@@ -95,7 +95,7 @@ namespace SenacStore.API.Controllers
                 Preco = produtoDTO.Preco,
                 EhLancamento = produtoDTO.EhLancamento,
                 Nota = produtoDTO.Nota,
-                Categoria = produtoDTO.Categoria
+                CategoriaId = produtoDTO.CategoriaId
             };
 
             await _produtoRepository.UpdateAsync(produto);

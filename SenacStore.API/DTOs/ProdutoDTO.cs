@@ -12,6 +12,7 @@ namespace SenacStore.API.DTOs
         public int Nota { get; set; }
         public bool EhLancamento { get; set; }
         public decimal Preco { get; set; }
+        public int CategoriaId { get; set; }
         public string Categoria { get; set; }
     }
 }

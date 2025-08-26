@@ -15,6 +15,8 @@ namespace SenacStore.API.Models
         public int Nota { get; set; }
         public bool EhLancamento { get; set; }
         public decimal Preco { get; set; }
-        public string Categoria { get; set; }
+
+        public int CategoriaId { get; set; }
+        public Categoria Categoria { get; set; }
     }
 }

@@ -16,12 +16,12 @@ namespace SenacStore.API.Repositories
 
         public async Task<List<Produto>> GetAllAsync()
         {
-            return await _context.Produtos.ToListAsync();
+            return await _context.Produtos.Include(p => p.Categoria).ToListAsync();
         }
 
         public async Task<Produto> GetByIdAsync(int id)
         {
-            return await _context.Produtos.FindAsync(id);
+            return await _context.Produtos.Include(p => p.Categoria).FirstOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task UpdateAsync(Produto produto)
