@@ -45,6 +45,5 @@ namespace SenacStore.API.Repositories
                 await _context.SaveChangesAsync();
             }
         }
-
     }
 }

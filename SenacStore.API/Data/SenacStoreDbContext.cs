@@ -9,5 +9,6 @@ namespace SenacStore.API.Data
 
         public DbSet <Produto> Produtos { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<Cadastro> Cadastros { get; set; }
     }
 }
