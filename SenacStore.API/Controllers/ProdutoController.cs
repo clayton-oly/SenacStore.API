@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SenacStore.API.DTOs;
 using SenacStore.API.Interfaces;
 using SenacStore.API.Models;
@@ -7,6 +8,7 @@ namespace SenacStore.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ProdutoController : ControllerBase
     {
         private readonly IProdutoRepository _produtoRepository;
