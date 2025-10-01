@@ -7,6 +7,7 @@ namespace SenacStore.API.Interfaces
         Task AddAsync(Produto produto);
         Task<List<Produto>> GetAllAsync();
         Task<Produto> GetByIdAsync(int id);
+        Task<List<Produto>> GetByCategoryAsync(int categoryId);
         Task UpdateAsync(Produto produto);
         Task DeleteAsync(int id);
     }

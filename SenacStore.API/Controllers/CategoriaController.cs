@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using SenacStore.API.DTOs;
 using SenacStore.API.Interfaces;
@@ -9,8 +10,8 @@ using SenacStore.API.Repositories;
 namespace SenacStore.API.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors("MyPolicy")]
     [ApiController]
-    [Authorize]
     public class CategoriaController : ControllerBase
     {
         private readonly ICategoriaRepository _categoriaRepository;
@@ -55,6 +56,7 @@ namespace SenacStore.API.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Post([FromBody] CategoriaDTO categoriaDTO)
         {
             var categoria = new Categoria
@@ -69,6 +71,7 @@ namespace SenacStore.API.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> Put([FromBody] CategoriaDTO categoriaDTO)
         {
             var categoria = new Categoria
@@ -82,6 +85,7 @@ namespace SenacStore.API.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> Delete(int id)
         {
             await _categoriaRepository.DeleteAsync(id);
